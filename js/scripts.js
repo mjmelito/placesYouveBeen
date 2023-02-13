@@ -53,13 +53,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function displayEntry(addressBook) {
   let i = 1;
+  let archive = document.querySelector(".archive");
+  archive.innerHTML = "";
   while (addressBook.places[i] !== undefined) {
-    let archive = document.querySelector(".archive");
     let entry = document.createElement("h4");
-    entry.setAttribute("class", "entry");
+    let ul = document.createElement("ul");
+    let li = document.createElement("li");
+    let li2 = document.createElement("li");
+    entry.setAttribute("class", addressBook.places[i].name);
     entry.append(addressBook.places[i].name);
-    archive.after(entry);
+    archive.append(entry)
+    ul.setAttribute("id", "hidden");
+    li.append("Location: " + addressBook.places[i].location);
+    li2.append("Landmark: " + addressBook.places[i].landmark);
+    ul.append(li, li2);
+    entry.append(ul);
     i++;
   }
-  
+}
+
+let onclick = document.querySelector("h3");
+onclick.addEventListener("click", hiddenFunc);
+
+function hiddenFunc() {
+  document.querySelector("#hidden").removeAttribute("id");
 }
