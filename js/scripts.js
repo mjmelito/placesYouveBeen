@@ -38,7 +38,6 @@ function entryHandler(event) {
 
   entryReader(city, state, landmark);
   displayEntry(addressBook);
-  
 }
 
 function entryReader(city, state, landmark) {
